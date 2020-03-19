@@ -1,12 +1,16 @@
 var playerOneScore = 0;
 var playerTwoScore = 0;
+var turnCount = 1;
+var gameOver = false;
+
+
  
-while (playerOneScore < 3 && playerTwoScore < 3) {
+while (turnCount <= 3) {
     
     function shoot() {
-            var turn = Math.floor(Math.random()*3);
+            var cast = Math.floor(Math.random()*3);
         
-            switch (turn) {
+            switch (cast) {
                 case 0:
                     return "rock";
                     break;
@@ -19,7 +23,7 @@ while (playerOneScore < 3 && playerTwoScore < 3) {
                 
             } 
         
-            return turn;
+            return cast;
         };
  
         var hand1 = shoot();
@@ -48,14 +52,20 @@ while (playerOneScore < 3 && playerTwoScore < 3) {
             playerTwoScore += 1;
                 
         }
+        turnCount += 1;
+        if (turnCount == 3) {
+            gameOver = true;
+        }
         console.log("Player One drew " + hand1 + ", Player Two drew " + hand2);
         console.log("Player One: " + playerOneScore + ", Player Two: " + playerTwoScore);
     }
  
-    if (playerOneScore == 3) {
+    if (gameOver && playerOneScore > playerTwoScore) {
         console.log("Player One wins!");
-    } else if (playerTwoScore == 3) {
+    } else if (gameOver && playerTwoScore > playerOneScore) {
         console.log("Player Two wins!");
+    } else {
+        console.log("It's a draw.");
     }
 
 
