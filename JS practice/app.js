@@ -1,6 +1,6 @@
 var hands = ['rock', 'paper', 'scissors'];
 
-const getHand = () => {
+function getHand() {
     var hand = hands[Math.floor(Math.random()*3)];
     return hand;
 }
@@ -10,18 +10,18 @@ const getHand = () => {
 var player1 = {
     name: 'Jeff',
     hand: getHand()
-}
+};
 
 var player2 = {
     name: 'Rosa',
     hand: getHand()
-}
+};
 
-function playRound(player1, player2) {
+function playRound() {
     
     
-    console.log("Jeff drew " + player1.hand);
-    console.log("Rosa drew " + player2.hand);
+    console.log('Jeff drew ' + player1.hand);
+    console.log('Rosa drew ' + player2.hand);
 
     if (player1.hand == player2.hand) {
         console.log("It's a tie.");
@@ -46,11 +46,11 @@ function playRound(player1, player2) {
     }
 }
 
-function playGame(player1, player2, playUntil) {
-    var playUntil = 5;
+function playGame(playUntil) {
+    
     var playerOneWins = 0;
     var playerTwoWins = 0;
-    while (playerOneWins <= playUntil || playerTwoWins <= playUntil) {
+    while (playerOneWins <= playUntil && playerTwoWins <= playUntil) {
         if (playRound() == player1) {
             playerOneWins += 1;
         } else if (playRound() == player2) {
@@ -66,4 +66,4 @@ function playGame(player1, player2, playUntil) {
 
 
 }
-playGame();
+playGame(5);
